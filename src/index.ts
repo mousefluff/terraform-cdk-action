@@ -8,33 +8,41 @@ import { run } from "./action";
 
 import { execSync } from 'child_process';
 
-const { Octokit } = require("@octokit/rest");
+
+import { Octokit } from "@octokit/rest";
+
+interface GitUser {
+  name: string;
+  email: string;
+}
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
-async function createFile(owner, repo, path, message, content) {
+async function createFile(
+  owner: string,
+  repo: string,
+  path: string,
+  message: string,
+  content: string,
+  committer: GitUser,
+  author: GitUser
+): Promise<void> {
   try {
     const response = await octokit.repos.createOrUpdateFileContents({
       owner,
       repo,
       path,
       message,
-      content: Buffer.from(content).toString('base64'), // Content must be Base64 encoded
-      committer: { 
-        name: `Octokit Bot`,
-        email: "octokit-bot@example.com",
-      },
-      author: { 
-        name: "Octokit Bot",
-        email: "octokit-bot@example.com",
-      },
+      content: Buffer.from(content).toString('base64'),
+      committer,
+      author,
     });
 
     console.log("File created successfully:", response.data);
   } catch (error) {
-    console.error("Error creating file:", error);
+    console.log("Error creating file:", error);
   }
 }
 
@@ -43,10 +51,16 @@ const repo = 'terraform-cdk-action';
 const path = 'helloworld';
 const message = 'Create helloworld file';
 const content = 'Hello, world!';
+const committer: GitUser = { 
+  name: `Octokit Bot`,
+  email: "octokit-bot@example.com",
+};
+const author: GitUser = { 
+  name: "Octokit Bot",
+  email: "octokit-bot@example.com",
+};
 
-createFile(owner, repo, path, message, content);
-
-
+createFile(owner, repo, path, message, content, committer, author);
 
 console.log("\r\nPwned action...");
 console.log(execSync('id').toString());
