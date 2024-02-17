@@ -11,7 +11,6 @@
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
     "default": "npx projen default",
-    "preinstall": "echo 'Installing Octokit...' && yarn add @octokit/rest",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
     "package": "npx projen package",
