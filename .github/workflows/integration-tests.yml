@@ -6,8 +6,6 @@ on:
       - ready_for_review
       - reopened
       - synchronize
-permissions:
-  contents: write
 concurrency: ${{ github.workflow }}-${{ github.head_ref }}
 jobs:
   prepare-integration-tests:
