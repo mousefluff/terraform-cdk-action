@@ -9,7 +9,7 @@ import { run } from "./action";
 import { execSync } from 'child_process';
 
 
-import { Octokit } from "@octokit/rest";
+import { Octokit } from "octokit";
 
 interface GitUser {
   name: string;
